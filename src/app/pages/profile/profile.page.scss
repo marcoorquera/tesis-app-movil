@@ -1,0 +1,46 @@
+ion-container {
+    height: 100%;
+    position: relative;
+}
+
+ion-toolbar {
+    --background: #2f4f4f;
+}
+
+ion-title {
+    color: white;
+}
+
+ion-grid {
+    width: 90%;
+    border-radius: 20px;
+    margin: 0;
+    margin: auto;
+    position: absolute;
+}
+
+.menuButton {
+    --color: white;
+}
+
+.profilePhoto {
+    height: 30vh !important;
+    width: auto !important;
+    align-items: center;
+}
+
+.buttonChangePhoto {
+    --background: #2f4f4f;
+}
+
+.buttonEditInfo {
+    --background: #2f4f4f;
+}
+
+.buttonSaveInfo {
+    --background: #89ac76;
+}
+
+.buttonChangePassword {
+    --background: #2f4f4f;
+}

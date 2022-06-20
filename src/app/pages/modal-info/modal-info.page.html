@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Productos</ion-title>
+    <ion-button (click)="salir()" fill="clear" slot="end">
+      <ion-icon name="close-circle-outline"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  
+  <div class="main" *ngFor="let producto of productsCategory">
+    <div (click)="modalPedido(producto.nombre_producto, producto.nombre_empresa, producto.descripcion, producto.categoria, producto.cantidad, producto.precio, producto.uid, producto.image_prod)" class="card_prod">
+      <div class="div1">
+        <h5 style="color: #3880ff"><b>{{producto.nombre_producto}}</b></h5>
+      </div>
+      <div class="div2">
+        <img class="img_prod" [src]="producto.image_prod">
+      </div>
+      <div class="div3">
+        <ion-text color="primary">
+          <p style="color: #3880ff;">{{producto.descripcion}}</p>
+        </ion-text>
+        
+      </div>
+      <div class="div4">
+        <p style="color: #28ba62"><b>{{producto.precio}} $</b></p>
+      </div>
+    </div>
+    
+  </div>
+</ion-content>

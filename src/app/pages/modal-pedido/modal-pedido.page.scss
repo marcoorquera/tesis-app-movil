@@ -1,0 +1,45 @@
+ion-content {
+    --ion-background-color: #e4e0ff;
+}
+
+ion-toolbar {
+    --background: #2f4f4f;
+}
+
+.primaryButton {
+    --background: #89ac76;
+}
+
+.secondaryButton {
+    --background: #2f4f4f;
+}
+
+ion-title {
+    color: white;
+}
+
+.closeButton {
+    --color: white;
+}
+
+.contador {
+    width: 95%;
+    height: 100px;
+    border-radius: 25px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 16px 16px 32px #c2bed9,
+        -16px -16px 32px #ffffff;
+
+}
+
+.unidades {
+    width: 95%;
+    height: 95%;
+    display: grid;
+    padding-top: 5%;
+    margin-left: auto;
+    margin-right: auto;
+    grid-template-columns: 35% 20% 25% 20%;
+    grid-template-rows: 100%;
+}

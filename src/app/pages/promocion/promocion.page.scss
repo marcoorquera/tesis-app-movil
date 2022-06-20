@@ -1,0 +1,43 @@
+ion-toolbar {
+    --background: #2f4f4f;
+}
+
+ion-title {
+    color: white;
+}
+
+ion-list {
+    margin-top: 5%
+}
+
+ion-searchbar {
+    --ion-background-color: #2e4447;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    --color: white;
+}
+
+.toggleMenuButton {
+    --color:white;
+}
+
+.searchbar {
+    background-color: #2e4447;
+    border-radius: 15px;
+    width: 90%;
+    height: 10%;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 5%;
+}
+
+.cards {
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 3%;
+    width: 95%;
+    border-radius: 15px;
+    box-shadow: 16px 16px 32px #c2bed9,
+        -16px -16px 32px #ffffff;
+}

@@ -1,0 +1,60 @@
+
+<ion-split-pane contentId="content">
+  <ion-menu auto-hide="false" contentId="content" side="start">    
+    <ion-toolbar>
+      <ion-buttons slot="end">
+        <ion-button class="closeMenuButton" (click)="closeMenu()">
+          <ion-icon name="chevron-back-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+
+    <ion-content>
+      <ion-list>
+        <ion-menu-toggle>
+          <ion-item (click)="goToHome()">
+            <ion-icon name="home" slot="start"></ion-icon>
+            <p>Inicio</p>            
+          </ion-item>
+          
+          <ion-item (click)="goToProfile()">
+            <ion-icon name="person" slot="start"></ion-icon>
+            <p>Mi Perfil</p>
+          </ion-item>
+
+          <ion-item (click)="goToPedidos()">
+            <ion-icon slot="start" name="briefcase"></ion-icon>
+            <p>Mis Pedidos</p>
+          </ion-item>
+
+          <ion-item (click)="goToPromocion()">
+            <ion-icon slot="start" name="pricetags"></ion-icon>
+
+            <p>Promociones</p>
+          </ion-item>
+          
+          <!-- <ion-item >
+            <ion-icon slot="start" name="call"></ion-icon>
+            <p>Soporte</p>
+          </ion-item> -->
+  
+          <!-- <ion-item>
+            <ion-icon slot="start" name="information-circle"></ion-icon>
+            <p>Información</p>
+          </ion-item> -->
+          
+          <ion-item (click)="logout()">
+            <ion-icon name="log-out" slot="start"></ion-icon>
+            <p>Cerrar Sesión</p>
+          </ion-item>
+        </ion-menu-toggle>
+        
+      </ion-list>        
+    </ion-content>
+
+  </ion-menu>
+  <ion-router-outlet id="content" main></ion-router-outlet>
+</ion-split-pane>
+
+
+

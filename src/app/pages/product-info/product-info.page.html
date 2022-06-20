@@ -1,0 +1,317 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{nom_empresa}}</ion-title>
+    <ion-button class="closeButton" (click)="validationExit()" fill="clear" slot="end">
+      <ion-icon slot="end" name="close-circle-outline"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="principal">
+
+    
+    <img style="width: 100%; height: 200px;" [src]="img_empresa">
+    <div style="width: 95%; margin-left: auto; margin-right: auto;">
+      <ion-searchbar color="medium" animated (ionChange)="buscarProducto( $event )"></ion-searchbar>    
+    </div>
+    <div style="width: 98%; margin-left: auto; margin-right: auto;">
+      <ion-segment  style="--overflow: hidden;" scrollable>
+        <ion-col *ngFor="let cat of categoria_duplicada" >
+          <ion-button class="boxCategories" (click)="listByCategory(cat.categoria)" fill="solid">
+            {{cat.categoria}}
+          </ion-button>
+        </ion-col>
+        
+      </ion-segment>      
+    </div>
+    
+    <!--
+    <div [hidden]="false" class="main" *ngFor="let producto of categorySelected | filtroProd: textoBuscarProd">
+      <div (click)="modalPedido(producto.nombre_producto, producto.empresa, producto.descripcion, producto.categoria, producto.cantidad, producto.precio, producto.id, producto.imagen)" class="card_prod">
+        <div class="div1">
+          <p style="color: #3880ff"><b>{{producto.nombre_producto}}</b></p>
+        </div>
+        <div class="div2">
+          <img class="img_prod" [src]="producto.imagen">
+        </div>
+        <div class="div3">
+          <ion-text color="primary">
+            <p style="color: #3880ff;">{{producto.descripcion}}</p>
+          </ion-text>
+          <p style="opacity: 0.5;">{{producto.categoria_producto}}</p>
+        </div>
+        <div class="div4">
+          <p style="color: #28ba62"><b>${{producto.precio}}</b></p>
+        </div>
+      </div>
+      
+    </div>  
+    -->
+
+    <div>
+      
+      <div [hidden]="categoriaFiltered" id="element" class="main2" *ngFor="let p of filtrprodsCategorySlectedExist | filtroProd: textoBuscarProd">
+      
+        <div (click)="modalPedido(p.empresa_proveedor, p.id_prod, p.nombre_producto, p.empresa_proveedor, p.descripcion_producto, p.categoria_producto, p.cantidad_producto, p.precio_producto, p.image_producto,p.url3D)" class="card_prod">
+          <div class="div1">
+            <p><b>{{p.nombre_producto}}</b></p>
+          </div>
+          <div class="div2">
+            <img class="img_prod" [src]="p.image_producto">
+          </div>
+          <div class="div3">
+            <ion-text color="black">
+              <p style="width: 185px;
+              margin-top: 15%;
+              white-space: nowrap;
+              text-overflow: ellipsis;
+              overflow: hidden; ">{{p.descripcion_producto}}</p>
+            </ion-text>
+            <p style="opacity: 0.5;">{{p.categoria_producto}}</p>
+          </div>
+          <div class="div4">
+            <p class="productPrice"><b>{{p.precio_producto}} $</b></p>
+          </div>
+        </div>
+        
+      </div>
+    
+      
+      <div [hidden]="mainProds" class="main" *ngFor="let prod of filtrlistprodExist | filtroProd: textoBuscarProd">
+        <div (click)="modalPedido(prod.empresa_proveedor, prod.id_prod, prod.nombre_producto, prod.empresa_proveedor, prod.descripcion_producto, prod.categoria_producto, prod.cantidad_producto, prod.precio_producto, prod.image_producto,prod.url3D)" class="card_prod">
+          <div class="div1">
+            <p><b>{{prod.nombre_producto}}</b></p>
+          </div>
+          <div class="div2">
+            <img class="img_prod" [src]="prod.image_producto">
+          </div>
+          <div class="div3">
+            <ion-text>
+              <p style="width: 185px;
+              margin-top: 15%;
+              white-space: nowrap;
+              text-overflow: ellipsis;
+              overflow: hidden;">{{prod.descripcion_producto}}</p>
+            </ion-text>
+            <p style="opacity: 0.5;">{{prod.categoria_producto}}</p>
+          </div>
+          <div class="div4">
+            <p class="productPrice"><b>{{prod.precio_producto}} $</b></p>
+          </div>
+        </div>  
+      </div>
+      <div [hidden]="selection" class="main" *ngFor="let producto of filtrprodsCategoryExist | filtroProd: textoBuscarProd">
+        <div (click)="modalPedido(producto.empresa_proveedor, producto.id_prod, producto.nombre_producto, producto.empresa_proveedor, producto.descripcion_producto, producto.categoria_producto, producto.cantidad_producto, producto.precio_producto, producto.image_producto,producto.url3D)" class="card_prod">
+          <div class="div1">
+            <p><b>{{producto.nombre_producto}}   </b></p>
+          </div>
+          
+          <div class="div2">
+            <img class="img_prod" [src]="producto.image_producto">
+          </div>
+          <div class="div3">
+            <ion-text color="black">
+              <p style="width: 185px;
+              margin-top: 15%;
+              white-space: nowrap;
+              text-overflow: ellipsis;
+              overflow: hidden;">{{producto.descripcion_producto}}</p>
+            </ion-text>
+            <p style="opacity: 0.5;">{{producto.categoria_producto}}</p>
+          </div>
+          <div class="div4">
+            <p class="productPrice"><b>{{producto.precio_producto}} $</b></p>
+          </div>
+        </div>   
+        
+      </div>  
+    </div>    
+    
+    <!--
+      <ion-list>    
+      
+        <ion-item >    
+        
+          <ion-card>
+          <ion-grid>
+            <ion-row>
+              <ion-col size="3">
+                <img style="width: 90px; height:100px; padding-top: auto; padding-bottom: auto; " [src]="producto.imagen">
+              </ion-col>
+              <ion-col size="4">
+                <p>{{producto.nombre}}</p>
+                <p>{{producto.descripcion}}</p>
+              </ion-col>
+              <ion-col size="5">
+                <ion-grid style="height: 100%; padding-top: 15%;">
+                  <ion-row>
+                    <ion-col size="4">
+                      <ion-button style="width: 50px; height: 50px;">
+                        <ion-icon name="add-circle-outline"></ion-icon>
+                      </ion-button>
+                    </ion-col>
+                    <ion-col size="4">
+                      <ion-input style="text-align: center;" value="3">
+                  
+                      </ion-input>
+                    </ion-col>
+                    <ion-col size="4">
+                      <ion-button style="width: 100%; height: 100%;">
+                        <ion-icon sytle="width:100px; height: 100px" name="remove-circle-outline"></ion-icon>
+                      </ion-button>
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>               
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card>
+      </ion-item>
+      
+      
+    </ion-list>
+    -->
+    
+  </div>
+
+  <div class="pedido" id="boton_pedido" (click)="goToPedidoList()" [hidden]="prepedidoIsEmpty">
+    <button class="pedido-button">
+      Pedidos
+    </button>  
+  </div>
+</ion-content>
+  
+<!--
+  <ion-content class="ion-padding">
+  <img [src]="image_prod"> 
+  <h1>{{name_prod}}</h1>
+  <ion-item>
+    <ion-label style="font-size: 25px;" position="floating">Descripción:</ion-label><br>
+    <ion-textarea [disabled]="true" value="{{descripcion_prod}}">
+    </ion-textarea>      
+  </ion-item>
+  <ion-item>
+    <ion-label>Precio: </ion-label>
+    <ion-input [disabled]="true" value="{{precio_prod}} $"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Cantidad: </ion-label>
+    <ion-input [disabled]="true" value="{{cantidad_prod}}"></ion-input>
+  </ion-item>
+  <ion-item >
+    <ion-label >Proveedor: </ion-label>
+    <ion-input [disabled]="true"  value="{{empresa_prov}}"></ion-input>
+  </ion-item>
+  <ion-card>
+    <div>
+      <h1 style="text-align: center;">Realizar pedido</h1>
+      <div class="contador">
+        <ion-grid class="ion-padding">
+          <ion-row>
+            <ion-col size="4">
+              <ion-button disabled="{{isDisabled}}" (click)="suma()" fill="clear">
+                <ion-icon style="width: 100%; height: 100%;" name="add-circle-outline"></ion-icon>
+              </ion-button>            
+            </ion-col>
+            <ion-col size="4">
+              <ion-item style="width: 100%;">
+                <ion-input disabled="true" style="text-align: center;" value="{{pedido}}"></ion-input>
+              </ion-item>
+              
+            </ion-col>
+            <ion-col size="4">
+              <ion-button disabled="{{isDisabled}}" (click)="resta()"  fill="clear">
+                <ion-icon style="width: 100%; height: 100%;" name="remove-circle-outline"></ion-icon>
+              </ion-button>
+            </ion-col>          
+          </ion-row>
+          <ion-row>
+            <ion-item class="total">
+              <ion-label style="font-size: 15px;">Total:</ion-label>
+              <ion-input style="text-align: center;" disabled="true" value="{{total_prod}} $"></ion-input>
+            </ion-item>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-button (click)="Comprar(pedido, total_prod)" style="width: 90%; font-size: 15px;" shape="round" size="large" >
+                <ion-icon slot="start" name="cart"></ion-icon>
+                Agregar al carrito</ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>      
+      </div>
+      
+    </div>
+  
+  </ion-card>
+
+  <ion-card>
+    <div>
+      <h1 style="text-align: center;">Reseña del producto</h1>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            
+            <div class="stars">
+              <div *ngIf="rate==0">
+              <ion-icon style="width: 50px; height: 50px;" color="primary" name="star-outline" (click)="onRate(1)"></ion-icon>
+              <ion-icon style="width: 50px; height: 50px;" color="primary" name="star-outline" (click)="onRate(2)"></ion-icon>
+              <ion-icon style="width: 50px; height: 50px;" color="primary" name="star-outline" (click)="onRate(3)"></ion-icon>
+              <ion-icon style="width: 50px; height: 50px;" color="primary" name="star-outline" (click)="onRate(4)"></ion-icon>
+              <ion-icon style="width: 50px; height: 50px;" color="primary" name="star-outline" (click)="onRate(5)"></ion-icon>
+            </div>
+            <div *ngIf="rate==1">
+              <ion-icon style="width: 50px; height: 50px;" color="primary" name="star" (click)="onRate(1)"></ion-icon>
+              <ion-icon style="width: 50px; height: 50px;" color="primary" name="star-outline" (click)="onRate(2)"></ion-icon>
+              <ion-icon style="width: 50px; height: 50px;" color="primary" name="star-outline" (click)="onRate(3)"></ion-icon>
+              <ion-icon style="width: 50px; height: 50px;" color="primary" name="star-outline" (click)="onRate(4)"></ion-icon>
+              <ion-icon style="width: 50px; height: 50px;" color="primary" name="star-outline" (click)="onRate(5)"></ion-icon>
+            </div>
+            <div *ngIf="rate==2">
+              <ion-icon style="width: 50px; height: 50px;" color="primary" name="star" (click)="onRate(1)"></ion-icon>
+              <ion-icon style="width: 50px; height: 50px;" color="primary" name="star" (click)="onRate(2)"></ion-icon>
+              <ion-icon style="width: 50px; height: 50px;" color="primary" name="star-outline" (click)="onRate(3)"></ion-icon>
+              <ion-icon style="width: 50px; height: 50px;" color="primary" name="star-outline" (click)="onRate(4)"></ion-icon>
+              <ion-icon style="width: 50px; height: 50px;" color="primary" name="star-outline" (click)="onRate(5)"></ion-icon>
+            </div>
+          
+            <div *ngIf="rate==3">
+              <ion-icon style="width: 50px; height: 50px;" color="primary" name="star" (click)="onRate(1)"></ion-icon>
+              <ion-icon style="width: 50px; height: 50px;" color="primary" name="star" (click)="onRate(2)"></ion-icon>
+              <ion-icon style="width: 50px; height: 50px;" color="primary" name="star" (click)="onRate(3)"></ion-icon>
+              <ion-icon style="width: 50px; height: 50px;" color="primary" name="star-outline" (click)="onRate(4)"></ion-icon>
+              <ion-icon style="width: 50px; height: 50px;" color="primary" name="star-outline" (click)="onRate(5)"></ion-icon>
+            </div>
+            <div *ngIf="rate==4">
+              <ion-icon style="width: 50px; height: 50px;" color="primary" name="star" (click)="onRate(1)"></ion-icon>
+              <ion-icon style="width: 50px; height: 50px;" color="primary" name="star" (click)="onRate(2)"></ion-icon>
+              <ion-icon style="width: 50px; height: 50px;" color="primary" name="star" (click)="onRate(3)"></ion-icon>
+              <ion-icon style="width: 50px; height: 50px;" color="primary" name="star" (click)="onRate(4)"></ion-icon>
+              <ion-icon style="width: 50px; height: 50px;" color="primary" name="star-outline" (click)="onRate(5)"></ion-icon>
+            </div>
+            <div *ngIf="rate==5">
+              <ion-icon style="width: 50px; height: 50px;" color="primary" name="star" (click)="onRate(1)"></ion-icon>
+              <ion-icon style="width: 50px; height: 50px;" color="primary" name="star" (click)="onRate(2)"></ion-icon>
+              <ion-icon style="width: 50px; height: 50px;" color="primary" name="star" (click)="onRate(3)"></ion-icon>
+              <ion-icon style="width: 50px; height: 50px;" color="primary" name="star" (click)="onRate(4)"></ion-icon>
+              <ion-icon style="width: 50px; height: 50px;" color="primary" name="star" (click)="onRate(5)"></ion-icon>
+            </div>
+             </div>
+            <ion-item class="ion-padding">
+              <ion-label position="floating">Dejanos tu opinión</ion-label>              
+              <ion-textarea [(ngModel)]="comentario"></ion-textarea>
+            </ion-item >
+            <ion-button (click)="SendComentary()" style="width: 90%; font-size: 15px;" shape="round" size="large">
+              <ion-icon slot="start" name="paper-plane"></ion-icon>
+              Enviar reseña</ion-button>
+              
+            
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+    
+  </ion-card>
+
+-->  
+

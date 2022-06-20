@@ -1,0 +1,110 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Busqueda</ion-title>
+    <ion-button class="closeButton" (click)="validationExit()" fill="clear" slot="end">
+      <ion-icon name="close-circle-outline"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+  <ion-segment style="--overflow: hidden;" scrollable>
+    <ion-grid>
+      <ion-row>
+
+        <ion-col>
+          <ion-button expand="block" class="buttonCategories" (click)="showEmpresas()">
+            Empresas
+          </ion-button>
+        </ion-col>
+        <!-- <ion-col>
+              <ion-button shape="round" (click)="showProductCategory()">
+                categorias
+              </ion-button>
+            </ion-col> -->
+        <ion-col>
+          <ion-button expand="block" class="buttonCategories" (click)="showProductos()">
+            Producto
+          </ion-button>
+        </ion-col>
+
+      </ion-row>
+    </ion-grid>
+  </ion-segment>
+
+  <div>
+    <div [hidden]="empresasEnable" class="empresas">
+      <div>
+        <ion-searchbar color="medium" animated (ionChange)="buscar( $event )">
+
+        </ion-searchbar>
+      </div>
+      <div class="titulo">
+        <h2>Empresas</h2>
+      </div>
+      <div class="main" *ngFor="let proveedor of proveedores | filtro: textoBuscar">
+        <div (click)="showDetailesProds( proveedor.uid_vendedor, proveedor.image_vendedor, proveedor.nombre_empresa)"
+          class="card">
+          <div class="div1">
+            <h3>
+              {{proveedor.nombre_empresa}}
+            </h3>
+          </div>
+          <div class="div2">
+            <img [src]="proveedor.image_vendedor">
+          </div>
+          <div class="div3">
+            <p>
+              {{proveedor.direccion_vendedor}}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div [hidden]="productosEnable" class="empresas">
+
+      <div>
+        <ion-searchbar color="medium" animated (ionChange)="buscarProducto( $event )"></ion-searchbar>
+      </div>
+      <div class="titulo">
+        <h2>Productos</h2>
+
+      </div>
+      <div class="main" *ngFor="let producto of productos | filtroProd: textoBuscarProd">
+        <div
+          (click)="modalPedido(producto.nombre_producto, producto.nombre_proveedor, producto.descripcion_producto, producto.categoria_producto, producto.cantidad_producto, producto.precio_producto, producto.uid_user, producto.image_producto, producto.empresa_proveedor, producto.id_prod,producto.image_empresa,producto.url3D)"
+          class="card_prod">
+          <div class="div1">
+
+          </div>
+          <div class="div2">
+            <img class="img_prod" [src]="producto.image_producto">
+          </div>
+          <div class="tittle_products">
+            <ion-text>
+              <h3>
+                {{producto.nombre_producto}}
+              </h3>
+            </ion-text>
+
+          </div>
+          <div class="div4">
+            <p>{{producto.empresa_proveedor}}</p>
+          </div>
+        </div>
+
+      </div>
+
+
+    </div>
+
+  </div>
+</ion-content>
+
+<div class="pedido" id="boton_pedido" (click)="goToPedidoList()" [hidden]="prepedidoIsEmpty">
+  <button class="pedido-button">
+    Pedidos
+  </button>
+</div>

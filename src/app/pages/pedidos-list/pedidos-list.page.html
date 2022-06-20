@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Mi lista a cotizar
+    </ion-title>
+    <ion-button class="closeButton" (click)="salir()" fill="clear" slot="end">
+      <ion-icon slot="end" name="close-circle-outline"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="content">
+    <div class="main" *ngFor="let pedido of listadoProducto">
+      <div class="div1">
+        <img class="image_prod" [src]="pedido.imagen_pedido">
+      </div>
+      <div class="div2">
+        <p style="color: black;">{{pedido.nombre_pedido}}</p>
+        <p style="color: black;">${{pedido.precio_unit}}</p>
+      </div>
+      <div class="div3">
+        <div class="button1">
+          <button
+            (click)="suma(pedido.id_usuario,pedido.id_prepedido, pedido.cantidad_pedido, pedido.categoria_pedido, pedido.empresa, pedido.id_prod, pedido.imagen_pedido, pedido.nombre_pedido, pedido.subtotal,pedido.precio_unit)"
+            class="btnplus">+</button>
+        </div>
+        <div class="value">
+          <p style="color: black" id="valor">{{pedido.cantidad_pedido}}</p>
+        </div>
+        <div class="button2">
+          <button
+            (click)="resta(pedido.id_usuario,pedido.id_prepedido, pedido.cantidad_pedido, pedido.categoria_pedido, pedido.empresa, pedido.id_prod, pedido.imagen_pedido, pedido.nombre_pedido, pedido.subtotal, pedido.precio_unit)"
+            class="btnless" mini>-</button>
+        </div>
+      </div>
+      <div class="div4">
+        <button shape="round" (click)="delete(pedido.id_prepedido)" class="delete">
+          <ion-icon name="trash"></ion-icon>
+        </button>
+      </div>
+    </div>
+    <br>
+    <div class="subtotal">
+      <div class="sub">
+        <h2 style="color: black;">Subtotal:</h2>
+      </div>
+      <div class="valor">
+        <h1 style="color: black; text-align: right;"><b>${{sub_TotalFinal}}</b></h1>
+      </div>
+    </div>
+    <div class="confirmar">
+      <ion-button class="confirmList" expand="block" style="height: 40px;" (click)="savePedidos()">
+        Confirmar Pedido
+      </ion-button>
+      <br>
+      <ion-button class="continueList" expand="block" style="height: 40px;" (click)="seguirComprando()">
+        Seguir comprando
+      </ion-button>
+    </div>
+  </div>
+
+
+</ion-content>

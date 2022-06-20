@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button class="toggleMenuButton" (click)="closeMenu()"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Promociones</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+
+  <div (click)="modalSearch()" class="searchbar">
+    <ion-searchbar placeholder="Buscar" animated (ionChange)="buscar( $event )"></ion-searchbar>
+  </div>
+  
+  <ion-list>
+    <ion-item class="cards" *ngFor="let promocion of promos | filtro: textoBuscar: 'nombre_empresa'">
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <img style="display: block; margin-left: auto; margin-right: auto; width: 50%; height: 100%; "
+              [src]="promocion.image_promo">
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <h1>{{promocion.titulo_promo}}</h1>
+            <p>{{promocion.descripcion_promo}}</p>
+            <h5>{{promocion.nombre_empresa}}</h5>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+  </ion-list>
+</ion-content>

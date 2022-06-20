@@ -1,0 +1,28 @@
+ion-content {
+    --background: url('../../../assets/images/backgroundhome1.jpg') 0 0/100% 100% no-repeat;
+}
+
+ion-item {
+    --background: transparent;
+}
+
+.btn_upload {
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: bold;
+    --background: #89ac76;
+    margin-top: 3%
+}
+
+.btn_login {
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: bold;
+    --background: #89ac76;
+    margin-top: 3%
+}
+
+.btn_register {
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: bold;
+    --background: #2f4f4f;
+    margin-top: 3%
+}

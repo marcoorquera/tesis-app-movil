@@ -1,0 +1,28 @@
+ion-content {
+    --background: url('../../../assets/images/backgroundmovil5.jpg') 0 0/100% 100% no-repeat;
+}
+
+ion-item {
+    --background: transparent;
+}
+
+.submit-btn {
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: bold;
+    --background: #2f4f4f;
+    margin-top: 5%
+}
+
+.createAccount {
+    font-family: 'Nunito Sans', sans-serif;
+    --background: #89ac76;
+    font-weight: bold;
+    margin-top: 3%;
+}
+
+.forgotPassword {
+    font-family: 'Nunito Sans', sans-serif;
+    --background: #89ac76;
+    font-weight: bold;
+    margin-top: 3%;
+}

@@ -1,0 +1,73 @@
+.datos{
+    margin-left: auto;
+    margin-right: auto;
+    width: 95%;
+    height: 100px;
+
+}
+
+.container{
+    width: 95%;
+    height: 100%;
+    display: grid;
+    margin-left: auto;
+    margin-right: auto;
+    grid-template-columns: 100%;
+    grid-template-rows: 40% 20% 5% 30%;
+  }
+  
+  .foto{
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .foto > .foto-perfil{
+    width: 160px;
+    height: 160px;
+    border: 30px;
+    background-color: blue;
+    border-radius: 150px;
+    margin-top: 80px;
+    
+  }
+  
+  #proveedor, #nom_empresa{
+    text-align: center;
+    color: #3880ff;
+    
+  }
+  
+  #proveedor{
+    font-size: 30px;
+    font-weight: bold;
+  }
+  
+  #nom_empresa{
+    font-size: 20px
+  }
+  
+  
+  
+  .icon{
+    margin-left: auto;
+    margin-right: auto;
+    width: 50px;
+    height: 50px;
+    background-color: #3880ff;
+    border-radius: 25px;
+  }
+  ion-icon{
+    margin-left: 16px;
+    margin-top: 17px;
+  }
+  
+  .informacion{
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 30% 40% 30%;
+  }
+  .detalle{
+    margin-top: 20px;
+    text-align: center;
+    color: #3880ff;
+  }

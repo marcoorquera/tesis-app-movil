@@ -1,0 +1,5 @@
+package com.muebleria.global;
+
+import com.getcapacitor.BridgeActivity;
+
+public class MainActivity extends BridgeActivity {}

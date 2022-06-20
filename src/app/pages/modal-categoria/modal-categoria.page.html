@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{categoria}}</ion-title>
+    <ion-button class="closeButton" (click)="validationExit()" fill="clear" slot="end">
+      <ion-icon slot="end" name="close-circle-outline">
+      </ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="searchbar">
+    <ion-searchbar placeholder="Buscar" animated (ionChange)="buscarProd( $event )">
+    </ion-searchbar>
+  </div>
+
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6" *ngFor="let producto of productos | filtroProd: textoBuscarProd" size="6">
+        <div
+          (click)="modalPedido(producto.nombre_producto, producto.empresa_proveedor, producto.descripcion_producto, producto.categoria_producto, producto.cantidad_producto, producto.precio_producto, producto.uid_user, producto.image_producto, producto.empresa_proveedor, producto.id_prod,producto.image_empresa,producto.url3D)"
+          class="card_prod">
+          <ion-card style="margin-left: auto; margin-right: auto; height: 300px; width: 95%;">
+
+            <img style="width: 100%; height: 140px;" class="img_prod" [src]="producto.image_producto">
+
+            <div style="height: 90px; width: 90%; margin-left: auto; margin-right: auto;">
+
+              <div class="div3">
+                <ion-text>
+                  <h3 class="titleProduct">{{producto.nombre_producto}}</h3>
+                </ion-text>
+
+              </div>
+
+              {{producto.empresa_proveedor}}
+
+              <ion-text>
+                <p class="priceText">{{producto.precio_producto}} $</p>
+              </ion-text>
+            </div>
+          </ion-card>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+<div class="pedido" id="boton_pedido" (click)="goToPedidoList() " [hidden]="prepedidoIsEmpty">
+  <button class="pedido-button">
+    Pedidos
+  </button>
+</div>

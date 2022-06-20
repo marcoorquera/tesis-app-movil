@@ -1,0 +1,68 @@
+ion-content {
+    --ion-background-color: #ffffff;
+}
+
+ion-toolbar {
+    --background: #2f4f4f;
+}
+
+ion-title {
+    color: white;
+}
+
+.closeButton {
+    --color:white;
+}
+
+.titleProduct {
+    color: black;
+}
+
+.priceText {
+    color: #2f4f4f;
+    font-size: 20px;
+}
+
+ion-card {
+    border-radius: 15px;
+    background: #ffffff;
+}
+
+.searchbar {
+    background-color: #2e4447;
+    border-radius: 15px;
+    width: 90%;
+    height: 60px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 5%;
+}
+
+ion-searchbar {
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    --color: white;
+}
+
+.pedido {
+    width: 90%;
+    height: 60px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1vh;
+}
+
+button {
+    background: #4f2f2f;
+    width: 80%;
+    height: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 15px;
+    color: white;
+    position: fixed;
+    bottom: 8px;
+    left: 0;
+    right: 0;
+}
