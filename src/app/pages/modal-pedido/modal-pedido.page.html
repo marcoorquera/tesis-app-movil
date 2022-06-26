@@ -39,23 +39,26 @@
 
     <div class="div5">
 
-      <!-- <ion-button expand="full"   *ngIf="!s1" disabled={{s}} (click)="estadoButon()" href={{url3D}}  shape="round"> 
+      <ion-button class="secondaryButton" expand="block" *ngIf="!s1" disabled={{s}} (click)="estadoButon()"
+        href={{url3D}}>
         Descargar 3D
       </ion-button>
 
-      <ion-button  expand="full"  *ngIf="s1"  shape="round"   href="https://global-muebles.marcoorquera.repl.co/" target="_blank">    
-        Ver en 3D
-      </ion-button> -->
-
-      <ion-button class="secondaryButton" expand="block" *ngIf="!s1" disabled={{s}} (click)="abrir()" href={{url3D}}>
+      <ion-button class="secondaryButton" expand="block" *ngIf="s1" href="https://global-muebles.marcoorquera.repl.co/"
+        target="_blank">
         Ver en 3D
       </ion-button>
+
+      <!-- <ion-button class="secondaryButton" expand="block" *ngIf="!s1" disabled={{s}} (click)="abrir()" href={{url3D}}>
+        Ver en 3D
+      </ion-button> -->
 
     </div>
   </div>
 
   <div style="width:100%; margin-left: auto; margin-right: auto; position: absolute; bottom: 20px;">
-    <ion-button class="primaryButton" (click)="contactoEmpresa(user_id, nombre, total_prod, pedido, image, total_prod)" expand="block" fill="solid">
+    <ion-button class="primaryButton" (click)="contactoEmpresa(user_id, nombre, total_prod, pedido, image, total_prod)"
+      expand="block" fill="solid">
       <p>Agregar a mi pedido {{total_prod}}$</p>
     </ion-button>
   </div>
